@@ -352,12 +352,11 @@
         </div>
     </section>
 
-    <!-- MODAL DE IMÁGENES DESPLEGABLES (SIN MARGEN NI FONDO NEGRO ALREDEDOR DE LA IMAGEN) -->
+    <!-- MODAL DE IMÁGENES DESPLEGABLES -->
     <div id="art-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-usta-cream border-4 border-black max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 relative pixel-border flex flex-col md:flex-row gap-6 items-center">
             <button onclick="closeArtModal()" class="absolute top-3 right-3 bg-usta-red text-white w-8 h-8 font-bold flex items-center justify-center border border-black z-20 hover:bg-black transition">×</button>
             
-            <!-- Imagen ajustada exactamente a sus dimensiones, sin fondo negro previo -->
             <div class="w-full md:w-3/5 flex justify-center items-center">
                 <img id="art-modal-img" src="" alt="Obra Desplegada" class="max-h-[75vh] w-auto h-auto object-contain border-2 border-black pixel-border">
             </div>
@@ -521,7 +520,7 @@
             }
         ];
 
-        /* Obras de Arte */
+        /* Obras de Arte con referencia corregida a cop-pig.jfif */
         const artData = [
             {
                 id: 1, category: "dibujo",
@@ -553,7 +552,7 @@
                 author: "Arte de Resistencia Urbana",
                 technique: "Grabado Serigráfico / Stencil",
                 desc: "Sátira gráfica en blanco y negro utilizando técnicas de esténcil e impresión urbana.",
-                image: "_COP=PIG_.jfif"
+                image: "cop-pig.jfif"
             }
         ];
 
@@ -627,7 +626,6 @@
             document.getElementById('pub-modal').classList.add('hidden');
         }
 
-        /* Galería con Visor Ajustado al Tamaño de la Obra */
         function filterArt(category) {
             const buttons = document.querySelectorAll('.art-filter-btn');
             buttons.forEach(btn => {
