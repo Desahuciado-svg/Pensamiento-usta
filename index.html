@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facultad de Filosofía y Letras - Universidad Santo Tomás</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        usta: {
+                            red: '#B71C1C',         /* Crimson Red */
+                            redDark: '#7F0000',
+                            black: '#121212',       /* Dark Charcoal Ink */
+                            cream: '#F7F4EE',       /* Paper White */
+                            gold: '#D4AF37'         /* Accent Gold */
+                        }
+                    },
+                    fontFamily: {
+                        typewriter: ['"Courier Prime"', 'Courier', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #F7F4EE;
+            color: #121212;
+        }
+        .poster-hero {
+            background-color: #B71C1C;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.25) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(183, 28, 28, 0.25);
+        }
+        .pixel-border {
+            box-shadow: 4px 4px 0px #121212;
+        }
+        /* Fusiona el Che Guevara eliminado completamente el fondo blanco */
+        .stencil-transparent {
+            mix-blend-mode: multiply;
+            filter: contrast(200%) brightness(95%);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- NAVBAR CON LOGO ACTUALIZADO -->
+    <header class="sticky top-0 z-50 bg-usta-black/95 backdrop-blur-md border-b-2 border-usta-red text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo personalizado con la imagen de la URSS -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-usta-red flex items-center justify-center border border-white/30 pixel-border overflow-hidden">
+                        <img src="73113193947560077.jfif" alt="Logo Facultad" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <a href="#" class="text-base sm:text-lg font-bold tracking-tight uppercase block text-white hover:text-usta-red transition">
+                            Filosofía y Letras
+                        </a>
+                        <span class="text-[10px] uppercase tracking-widest text-usta-gold font-bold block">
+                            Universidad Santo Tomás
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Navegación Principal -->
+                <nav class="hidden lg:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
+                    <a href="#quienes-somos" class="hover:text-usta-red transition py-1">¿Quiénes somos?</a>
+                    <a href="#objetivos" class="hover:text-usta-red transition py-1">¿Qué queremos lograr?</a>
+                    <a href="#vida-academica" class="hover:text-usta-red transition py-1">Noticias & Docencia</a>
+                    <a href="#publicaciones" class="hover:text-usta-red transition py-1">Publicaciones</a>
+                    <a href="#galeria-arte" class="hover:text-usta-red transition py-1">Obras de Arte</a>
+                    <a href="#teatro" class="hover:text-usta-red transition py-1">Teatro</a>
+                </nav>
+
+                <div class="hidden sm:block">
+                    <a href="#redes" class="bg-usta-red text-white hover:bg-white hover:text-usta-black px-4 py-2 text-xs font-bold uppercase transition shadow-md border border-white/20">
+                        Redes
+                    </a>
+                </div>
+
+                <div class="lg:hidden">
+                    <button onclick="toggleMobileMenu()" class="p-2 text-gray-300 hover:text-white">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-usta-black border-b border-usta-red px-4 pt-2 pb-6 space-y-3 text-xs uppercase font-bold">
+            <a href="#quienes-somos" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-usta-red py-2">¿Quiénes somos?</a>
+            <a href="#objetivos" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-usta-red py-2">¿Qué queremos lograr?</a>
+            <a href="#vida-academica" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-usta-red py-2">Noticias & Docencia</a>
+            <a href="#publicaciones" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-usta-red py-2">Publicaciones Estudiantiles</a>
+            <a href="#galeria-arte" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-usta-red py-2">Obras de Arte</a>
+            <a href="#teatro" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-usta-red py-2">Grupo de Teatro</a>
+            <a href="#redes" onclick="toggleMobileMenu()" class="block text-usta-red pt-2">Nuestras Redes Sociales</a>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="poster-hero text-white py-16 sm:py-24 relative overflow-hidden border-b-4 border-usta-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-black text-usta-gold text-xs font-bold uppercase tracking-widest mb-4 border border-usta-gold/50">
+                        <i class="fa-solid fa-star text-usta-gold text-[10px]"></i>
+                        Colectivo Estudiantil & Pensamiento Crítico
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none mb-6">
+                        Facultad de <br><span class="bg-black text-usta-gold px-2 py-1 inline-block mt-2">Filosofía y Letras</span>
+                    </h1>
+                    <p class="text-gray-100 text-base font-medium leading-relaxed mb-8 bg-black/50 p-4 border-l-4 border-usta-gold">
+                        Un espacio independiente gestionado por estudiantes. Aquí convergen la poesía visceral, el ensayo político, el arte gráfico, la narrativa y la reflexión filosófica sin censura ni academicismo rígido.
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-xs font-bold uppercase">
+                        <a href="#publicaciones" class="bg-black text-white hover:bg-white hover:text-usta-red px-6 py-3 border-2 border-white transition shadow-lg">
+                            Leer Artículos
+                        </a>
+                        <a href="#galeria-arte" class="bg-usta-gold text-usta-black hover:bg-white px-6 py-3 border-2 border-black transition">
+                            Ver Obras de Arte
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Che Guevara sobre Fondo Transparente -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="w-full max-w-sm flex justify-center p-2">
+                        <img src="Che Guevara.png" alt="Retrato Stencil" class="w-80 h-auto object-contain stencil-transparent">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿QUIÉNES SOMOS Y QUÉ QUEREMOS LOGRAR? -->
+    <section class="py-16 bg-white border-b-4 border-usta-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+                
+                <div id="quienes-somos" class="bg-usta-cream p-8 sm:p-10 border-2 border-usta-black pixel-border flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="w-12 h-12 bg-usta-red text-white flex items-center justify-center text-xl mb-6 border border-black font-bold">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase text-usta-black mb-4">¿Quiénes somos?</h2>
+                        <p class="text-gray-800 leading-relaxed mb-4 text-sm sm:text-base">
+                            Somos la voz viva de la <strong>Facultad de Filosofía y Letras de la Universidad Santo Tomás</strong>. Un colectivo de estudiantes unidos por la urgencia de repensar el mundo a través de la literatura, el arte visual y el debate crítico.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t-2 border-dashed border-gray-300 flex items-center text-xs font-bold text-usta-red uppercase tracking-wider">
+                        <span>● Comunidad Autónoma Estudiantil</span>
+                    </div>
+                </div>
+
+                <div id="objetivos" class="bg-usta-black text-white p-8 sm:p-10 border-2 border-usta-red pixel-border flex flex-col justify-between card-hover relative overflow-hidden">
+                    <div>
+                        <div class="w-12 h-12 bg-usta-red text-white flex items-center justify-center text-xl mb-6 border border-white font-bold">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase text-white mb-4">¿Qué queremos lograr?</h2>
+                        <ul class="space-y-3 text-gray-200 text-xs sm:text-sm">
+                            <li class="flex items-start gap-3">
+                                <span class="text-usta-red font-bold">■</span>
+                                <span><strong>Desatar el pensamiento crítico:</strong> Cuestionar las estructuras dogmáticas mediante foros y debates abiertos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-usta-red font-bold">■</span>
+                                <span><strong>Visibilizar el arte:</strong> Ser la plataforma definitiva para la poesía, el cuento, el ensayo político y las artes plásticas.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-6 border-t-2 border-zinc-800 flex items-center text-xs font-bold text-usta-gold uppercase tracking-wider">
+                        <span>● Transformación Social & Cultural</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REDES SOCIALES -->
+    <section id="redes" class="py-12 bg-usta-cream border-b-4 border-usta-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <h2 class="text-2xl font-bold uppercase text-usta-black">Nuestras Redes Sociales</h2>
+                <p class="text-gray-600 text-xs uppercase font-bold mt-1">Conéctate con el pulso activo de la facultad</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                <a href="#" onclick="showNotification('Instagram: @FilosofiaYLetrasUSTA'); return false;" class="bg-white p-4 sm:p-6 border-2 border-black text-center card-hover flex flex-col items-center group pixel-border">
+                    <div class="w-12 h-12 bg-usta-red text-white flex items-center justify-center text-xl mb-3 font-bold">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <span class="font-bold text-gray-900 text-xs uppercase">Instagram</span>
+                    <span class="text-[10px] text-gray-500">@FilosofiaUSTA</span>
+                </a>
+                <a href="#" onclick="showNotification('Facebook: Facultad Filosofia y Letras USTA'); return false;" class="bg-white p-4 sm:p-6 border-2 border-black text-center card-hover flex flex-col items-center group pixel-border">
+                    <div class="w-12 h-12 bg-usta-red text-white flex items-center justify-center text-xl mb-3 font-bold">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <span class="font-bold text-gray-900 text-xs uppercase">Facebook</span>
+                    <span class="text-[10px] text-gray-500">/FilosofiaUSTA</span>
+                </a>
+                <a href="#" onclick="showNotification('X/Twitter: @FFL_USTA'); return false;" class="bg-white p-4 sm:p-6 border-2 border-black text-center card-hover flex flex-col items-center group pixel-border">
+                    <div class="w-12 h-12 bg-usta-red text-white flex items-center justify-center text-xl mb-3 font-bold">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </div>
+                    <span class="font-bold text-gray-900 text-xs uppercase">X (Twitter)</span>
+                    <span class="text-[10px] text-gray-500">@FFL_USTA</span>
+                </a>
+                <a href="#" onclick="showNotification('YouTube: Canal Filosofía y Letras USTA'); return false;" class="bg-white p-4 sm:p-6 border-2 border-black text-center card-hover flex flex-col items-center group pixel-border">
+                    <div class="w-12 h-12 bg-usta-red text-white flex items-center justify-center text-xl mb-3 font-bold">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <span class="font-bold text-gray-900 text-xs uppercase">YouTube</span>
+                    <span class="text-[10px] text-gray-500">Filosofía & Letras</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOTICIAS DE LA FACULTAD Y PEDAGOGÍA / DOCENCIA -->
+    <section id="vida-academica" class="py-16 bg-white border-b-4 border-usta-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <span class="bg-usta-red text-white px-2 py-1 text-[10px] font-bold uppercase">Boletín Informativo</span>
+                    <h2 class="text-3xl font-bold uppercase text-usta-black mt-2">Noticias de la Facultad & Pedagogía</h2>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 border-b-2 border-black pb-4 mb-8">
+                <button onclick="switchTab('noticias')" id="tab-noticias" class="tab-btn bg-usta-red text-white px-4 py-2 border border-black font-bold text-xs uppercase">Noticias Facultad</button>
+                <button onclick="switchTab('pedagogia')" id="tab-pedagogia" class="tab-btn bg-usta-cream text-black px-4 py-2 border border-black font-bold text-xs uppercase hover:bg-gray-200">Pedagogía & Tips Docentes</button>
+                <button onclick="switchTab('poesia')" id="tab-poesia" class="tab-btn bg-usta-cream text-black px-4 py-2 border border-black font-bold text-xs uppercase hover:bg-gray-200">Recitales & Cultura</button>
+                <button onclick="switchTab('semilleros')" id="tab-semilleros" class="tab-btn bg-usta-cream text-black px-4 py-2 border border-black font-bold text-xs uppercase hover:bg-gray-200">Semilleros</button>
+            </div>
+
+            <div id="tab-content" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- PUBLICACIONES DE ESTUDIANTES -->
+    <section id="publicaciones" class="py-16 bg-usta-cream border-b-4 border-usta-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="bg-usta-black text-usta-gold px-3 py-1 font-bold text-xs uppercase border border-usta-gold">Producción Crítica & Literaria</span>
+                <h2 class="text-3xl sm:text-4xl font-bold uppercase text-usta-black mt-3">Artículos Escritos por Estudiantes</h2>
+                <p class="text-xs text-gray-700 font-bold uppercase mt-2">Política, Filosofía, Poesía, Cuentos y Microrrelatos</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="pub-filter-container">
+                <button onclick="filterPublications('all')" class="pub-filter-btn bg-usta-red text-white px-3 py-1.5 border border-black text-xs font-bold uppercase">Todos</button>
+                <button onclick="filterPublications('filosofia')" class="pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase">Filosofía</button>
+                <button onclick="filterPublications('poemas')" class="pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase">Poemas</button>
+                <button onclick="filterPublications('cuentos')" class="pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase">Cuentos</button>
+                <button onclick="filterPublications('microrrelatos')" class="pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase">Microrrelatos</button>
+                <button onclick="filterPublications('politica')" class="pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase">Política</button>
+                <button onclick="filterPublications('articulos')" class="pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase">Artículos</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="publications-grid"></div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE OBRAS DE ESTUDIANTES -->
+    <section id="galeria-arte" class="py-16 bg-white border-b-4 border-usta-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="bg-usta-red text-white px-2 py-1 text-[10px] font-bold uppercase">Exhibición Visual</span>
+                    <h2 class="text-3xl font-bold uppercase text-usta-black mt-2">Obras de Nuestros Estudiantes</h2>
+                    <p class="text-xs text-gray-600 font-bold uppercase mt-1">Haz clic sobre cualquier imagen para desplegar la obra completa</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                    <button onclick="filterArt('all')" class="art-filter-btn font-bold text-xs px-3 py-1.5 border border-black bg-usta-red text-white uppercase">Todas</button>
+                    <button onclick="filterArt('dibujo')" class="art-filter-btn text-xs px-3 py-1.5 border border-black bg-usta-cream text-black uppercase">Dibujo</button>
+                    <button onclick="filterArt('oleo')" class="art-filter-btn text-xs px-3 py-1.5 border border-black bg-usta-cream text-black uppercase">Grabado / Óleo</button>
+                    <button onclick="filterArt('manga')" class="art-filter-btn text-xs px-3 py-1.5 border border-black bg-usta-cream text-black uppercase">Manga / Ilustración</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="art-grid"></div>
+        </div>
+    </section>
+
+    <!-- PROMOCIÓN GRUPO DE TEATRO: CRIMEN Y CASTIGO -->
+    <section id="teatro" class="py-20 bg-usta-red text-white border-b-4 border-usta-black relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-usta-black border-4 border-white p-8 sm:p-12 lg:p-16 shadow-2xl relative pixel-border">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
+                        <span class="inline-block px-3 py-1 bg-usta-red text-white text-xs font-bold uppercase tracking-wider mb-4 border border-white">
+                            🎭 Convocatoria Abierta Semestral
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-black uppercase text-white mb-6 leading-tight">
+                            Grupo de Teatro <br><span class="text-usta-gold">"La Máscara de Dionisio"</span>
+                        </h2>
+                        <p class="text-gray-200 text-sm sm:text-base mb-6 leading-relaxed">
+                            Espacio de experimentación escénica enfocado en la dramaturgia universal, la tragedia clásica y el análisis psicológico existencial.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 py-4 mb-6 border-y border-white/20 text-xs">
+                            <div>
+                                <span class="block text-usta-gold font-bold uppercase">Obra en Montaje</span>
+                                <span class="text-gray-300">"Crimen y Castigo"</span>
+                            </div>
+                            <div>
+                                <span class="block text-usta-gold font-bold uppercase">Ensayos</span>
+                                <span class="text-gray-300">Mar y Jue: 4:00 PM</span>
+                            </div>
+                            <div>
+                                <span class="block text-usta-gold font-bold uppercase">Audiciones</span>
+                                <span class="text-gray-300">Abiertas Secretaría</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="openTheaterModal()" class="bg-usta-red hover:bg-white text-white hover:text-black px-6 py-3 border-2 border-white font-bold text-xs uppercase tracking-wider transition shadow-lg">
+                                Inscribirse / Audicionar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Portada de la Obra Reemplazada -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="w-full max-w-xs bg-usta-cream border-4 border-white overflow-hidden pixel-border shadow-2xl">
+                            <img src="descargar.jfif" alt="Crimen y Castigo - Dostoievski" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE IMÁGENES DESPLEGABLES (SIN MARGEN NI FONDO NEGRO ALREDEDOR DE LA IMAGEN) -->
+    <div id="art-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-usta-cream border-4 border-black max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 relative pixel-border flex flex-col md:flex-row gap-6 items-center">
+            <button onclick="closeArtModal()" class="absolute top-3 right-3 bg-usta-red text-white w-8 h-8 font-bold flex items-center justify-center border border-black z-20 hover:bg-black transition">×</button>
+            
+            <!-- Imagen ajustada exactamente a sus dimensiones, sin fondo negro previo -->
+            <div class="w-full md:w-3/5 flex justify-center items-center">
+                <img id="art-modal-img" src="" alt="Obra Desplegada" class="max-h-[75vh] w-auto h-auto object-contain border-2 border-black pixel-border">
+            </div>
+
+            <div class="w-full md:w-2/5 flex flex-col justify-between self-stretch">
+                <div>
+                    <span id="art-modal-tech" class="text-[10px] bg-usta-red text-white px-2 py-1 font-bold uppercase inline-block mb-3 border border-black">Técnica</span>
+                    <h3 id="art-modal-title" class="text-2xl font-bold uppercase text-usta-black mb-1">Título</h3>
+                    <p id="art-modal-author" class="text-xs text-gray-600 font-bold italic mb-4">Artista</p>
+                    <p id="art-modal-desc" class="text-xs text-gray-800 leading-relaxed border-t-2 border-black pt-4">Descripción de la obra.</p>
+                </div>
+                <button onclick="closeArtModal()" class="mt-8 w-full bg-black text-white hover:bg-usta-red py-3 text-xs font-bold uppercase border border-black transition">Cerrar Visor</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE PUBLICACIONES -->
+    <div id="pub-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-usta-cream border-4 border-black rounded-none max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative pixel-border">
+            <button onclick="closePubModal()" class="absolute top-4 right-4 bg-usta-red text-white w-8 h-8 font-bold flex items-center justify-center border border-black">×</button>
+            <span id="modal-category" class="inline-block px-2 py-1 bg-black text-white text-[10px] font-bold uppercase tracking-wider mb-3">Categoría</span>
+            <h3 id="modal-title" class="text-2xl font-bold uppercase text-usta-black mb-2">Título</h3>
+            <p id="modal-author" class="text-xs text-gray-600 mb-4 font-bold italic">Autor</p>
+            <div id="modal-content" class="text-gray-800 leading-relaxed space-y-4 text-xs sm:text-sm border-t-2 border-black pt-4"></div>
+            <div class="mt-8 pt-4 border-t border-black flex justify-end">
+                <button onclick="closePubModal()" class="bg-black text-white px-5 py-2 text-xs font-bold uppercase border border-black">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE TEATRO -->
+    <div id="theater-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-usta-cream border-4 border-black rounded-none max-w-md w-full p-6 sm:p-8 shadow-2xl relative pixel-border">
+            <button onclick="closeTheaterModal()" class="absolute top-4 right-4 bg-usta-red text-white w-8 h-8 font-bold flex items-center justify-center border border-black">×</button>
+            <div class="text-center mb-6">
+                <h3 class="text-lg font-bold uppercase text-usta-black">Inscripción Grupo de Teatro</h3>
+                <p class="text-xs text-gray-600 uppercase font-bold">"La Máscara de Dionisio"</p>
+            </div>
+            <form onsubmit="handleTheaterSubmit(event)" class="space-y-4 text-xs uppercase font-bold">
+                <div>
+                    <label class="block text-gray-800 mb-1">Nombre Completo</label>
+                    <input type="text" required class="w-full px-3 py-2 bg-white border-2 border-black text-sm font-sans focus:outline-none focus:border-usta-red" placeholder="Ej. Ana Lucía">
+                </div>
+                <div>
+                    <label class="block text-gray-800 mb-1">Correo Institucional</label>
+                    <input type="email" required class="w-full px-3 py-2 bg-white border-2 border-black text-sm font-sans focus:outline-none focus:border-usta-red" placeholder="estudiante@ustabuca.edu.co">
+                </div>
+                <div>
+                    <label class="block text-gray-800 mb-1">Área de Interés</label>
+                    <select class="w-full px-3 py-2 bg-white border-2 border-black text-sm font-sans focus:outline-none focus:border-usta-red">
+                        <option>Actuación / Dramaturgia</option>
+                        <option>Escenografía y Arte Visual</option>
+                        <option>Vestuario y Producción</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-usta-red text-white py-3 border-2 border-black text-xs uppercase hover:bg-black transition">
+                    Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-5 right-5 bg-black text-white px-5 py-3 border-2 border-usta-gold shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 z-50">
+        <span id="toast-message" class="text-xs font-bold uppercase">Notificación</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-usta-black text-white border-t-2 border-usta-red pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-zinc-800">
+                <div>
+                    <h4 class="text-sm font-bold uppercase text-usta-gold mb-3">Universidad Santo Tomás</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Facultad de Filosofía y Letras. Primer claustro universitario de Colombia.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase text-white mb-3">Secciones</h4>
+                    <ul class="space-y-2 text-xs text-gray-400 uppercase font-bold">
+                        <li><a href="#quienes-somos" class="hover:text-usta-red">¿Quiénes somos?</a></li>
+                        <li><a href="#vida-academica" class="hover:text-usta-red">Noticias & Docencia</a></li>
+                        <li><a href="#publicaciones" class="hover:text-usta-red">Publicaciones</a></li>
+                        <li><a href="#galeria-arte" class="hover:text-usta-red">Galería de Arte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase text-white mb-3">Contacto</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-1"><i class="fa-solid fa-envelope text-usta-red mr-2"></i> filosofia.letras@ustabuca.edu.co</p>
+                    <p class="text-xs text-gray-400 leading-relaxed"><i class="fa-solid fa-location-dot text-usta-red mr-2"></i> Edificio Santo Domingo - Bogotá</p>
+                </div>
+            </div>
+            <div class="text-center text-[10px] text-gray-500 uppercase font-bold">
+                <p>&copy; 2026 Facultad de Filosofía y Letras - Universidad Santo Tomás. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT JS -->
+    <script>
+        const tabData = {
+            noticias: [
+                { title: "Congreso Internacional de Filosofía Crítica 2026", date: "15 de Noviembre", desc: "Convocatoria abierta para ponencias estudiantiles en ética y ontología contemporánea.", tag: "Facultad" },
+                { title: "Lanzamiento Revista Independiente 'El Ágora'", date: "28 de Octubre", desc: "Nueva edición compilatoria con ensayos y reseñas de estudiantes de pregrado.", tag: "Publicación" },
+                { title: "Apertura del Proceso de Evaluación Docente", date: "Semestre Activo", desc: "Plataforma habilitada para retroalimentación académica del cuerpo profesoral.", tag: "Institucional" }
+            ],
+            pedagogia: [
+                { title: "Tips Pedagogía: La Pregunta Socrática en el Aula", date: "Guía Docente", desc: "Estrategias prácticas para fomentar el debate analítico y la indagación guiada en educación secundaria y universitaria.", tag: "Tips Docencia" },
+                { title: "Educación Emancipadora: De Freire a la Didáctica Actual", date: "Artículo Educativo", desc: "Cómo estructurar unidades didácticas fundamentadas en la pedagogía crítica y el diálogo horizontal.", tag: "Formación" },
+                { title: "Gestión de Aula en Filosofía y Literatura", date: "Recurso Pedagógico", desc: "Herramientas de evaluación formativa y metodologías basadas en seminarios alemanes.", tag: "Metodología" }
+            ],
+            poesia: [
+                { title: "Recital Nocturno 'Versos Bajo el Asfalto'", date: "Próximo Jueves - 6:00 PM", desc: "Micrófono abierto de poesía libre, lectura de manifiestos y música en directo.", tag: "Recital" },
+                { title: "Homenaje a la Poesía Maldita", date: "Encuentro Estudiantil", desc: "Lectura dramatizada e interpretación de textos clásicos de vanguardia.", tag: "Taller" }
+            ],
+            semilleros: [
+                { title: "Semillero de Hermenéutica y Política", date: "Sesiones Semanales", desc: "Discusión sobre teoría de la justicia, poder biopolítico y emancipación social.", tag: "Investigación" },
+                { title: "Semillero 'Poiesis' y Estética Visual", date: "Tutoría Estudiantil", desc: "Análisis intertextual entre cómic, cine negro y filosofía continental.", tag: "Investigación" }
+            ]
+        };
+
+        const publicationsData = [
+            {
+                id: 1, category: "filosofia", categoryLabel: "Filosofía",
+                title: "El mito del progreso en la era de la IA",
+                author: "Mateo Villamizar • 7° Semestre",
+                snippet: "¿Hasta qué punto la técnica moderna aliena el pensamiento crítico o lo expande? Una revisión desde Heidegger...",
+                content: "El avance de las IA generativas plantea preguntas axiológicas fundamentales. A través de este ensayo se cuestiona si la aceleración técnica realmente contribuye al desarrollo de la razón práctica o si desplaza la contemplación."
+            },
+            {
+                id: 2, category: "poemas", categoryLabel: "Poemas",
+                title: "Elegía a las Sombras del Claustro",
+                author: "Sofia Restrepo • 4° Semestre",
+                snippet: "Cruza la piedra el viento / y en la arcada silente de la noche / el libro abierto aguarda la palabra impuntual...",
+                content: "Cruza la piedra el viento / y en la arcada silente de la noche / el libro abierto aguarda la palabra impuntual.<br><br>No hay prisa en la memoria del mármol, solo el eco lejano de quienes buscaron la verdad."
+            },
+            {
+                id: 3, category: "cuentos", categoryLabel: "Cuentos",
+                title: "El Bibliotecario de la Torre Circular",
+                author: "Camilo Andrés Silva • 6° Semestre",
+                snippet: "Había un volumen que no figuraba en ningún catálogo. Don Ernesto sabía que abrirlo significaba olvidar su nombre...",
+                content: "La biblioteca guardaba más que volúmenes académicos; guardaba los silencios acumulados durante siglos. Don Ernesto descubrió un manuscrito cuya tinta cambiaba con la luz."
+            },
+            {
+                id: 4, category: "microrrelatos", categoryLabel: "Microrrelatos",
+                title: "Paradoja Temporal",
+                author: "Laura Valentina Ríos • 2° Semestre",
+                snippet: "Leyó detenidamente la última página de su propia biografía. Descubrió con horror que el autor era el lector.",
+                content: "Leyó detenidamente la última página de su propia biografía. Descubrió con horror que el autor era el lector, y que la tinta aún estaba fresca en sus dedos."
+            },
+            {
+                id: 5, category: "politica", categoryLabel: "Política",
+                title: "Esfera Pública y Redes Sociales",
+                author: "David Fernando Torres • 8° Semestre",
+                snippet: "Un diagnóstico sobre la polarización en las plataformas digitales y la pérdida del debate argumentativo...",
+                content: "El concepto de 'esfera pública' sufre una mutación radical en el entorno digital contemporáneo. Analizamos cómo las cámaras de eco reducen la capacidad de escucha."
+            },
+            {
+                id: 6, category: "articulos", categoryLabel: "Artículos",
+                title: "De la Tragedia Griega al Teatro Moderno",
+                author: "Juliana Morales • 5° Semestre",
+                snippet: "La catarsis como mecanismo de sanación colectiva: una mirada desde Sófocles hasta el drama actual...",
+                content: "La tragedia no es una simple escenificación del sufrimiento; es la experiencia estética del límite humano y su valor pedagógico en las aulas."
+            }
+        ];
+
+        /* Obras de Arte */
+        const artData = [
+            {
+                id: 1, category: "dibujo",
+                title: "Born to Kill",
+                author: "Estudio Visual Estudiantil",
+                technique: "Cartelismo / Fotomontaje",
+                desc: "Interpretación visual sobre la paradoja belicista y el símbolo de la paz en la cultura visual moderna.",
+                image: "kratz.jfif"
+            },
+            {
+                id: 2, category: "manga",
+                title: "Hair of the Dog",
+                author: "Tinta y Cómic Underground",
+                technique: "Ilustración Estilo Cómic / Fantasía",
+                desc: "Expresionismo psicodélico y estética de cartelería underground.",
+                image: "460141286929799180.jfif"
+            },
+            {
+                id: 3, category: "manga",
+                title: "Crazy Monkey - Pain Limit",
+                author: "Colectivo Gráfico Subterráneo",
+                technique: "Cartelismo / Fotomontaje Japonés",
+                desc: "Composición tipográfica y fotográfica inspirada en la cultura pop y la gráfica del Deathmatch.",
+                image: "Kasai Jun.jfif"
+            },
+            {
+                id: 4, category: "dibujo",
+                title: "Cop Pig",
+                author: "Arte de Resistencia Urbana",
+                technique: "Grabado Serigráfico / Stencil",
+                desc: "Sátira gráfica en blanco y negro utilizando técnicas de esténcil e impresión urbana.",
+                image: "_COP=PIG_.jfif"
+            }
+        ];
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function switchTab(tabKey) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn bg-usta-cream text-black px-4 py-2 border border-black font-bold text-xs uppercase hover:bg-gray-200";
+            });
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            if(activeBtn) {
+                activeBtn.className = "tab-btn bg-usta-red text-white px-4 py-2 border border-black font-bold text-xs uppercase";
+            }
+            const container = document.getElementById('tab-content');
+            const items = tabData[tabKey] || [];
+            container.innerHTML = items.map(item => `
+                <div class="bg-usta-cream p-6 border-2 border-black pixel-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] font-bold uppercase px-2 py-0.5 bg-black text-white">${item.tag}</span>
+                            <span class="text-xs text-gray-600 font-bold">${item.date}</span>
+                        </div>
+                        <h3 class="text-lg font-bold uppercase text-usta-black mb-2">${item.title}</h3>
+                        <p class="text-gray-700 text-xs leading-relaxed">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterPublications(category) {
+            const buttons = document.querySelectorAll('#pub-filter-container button');
+            buttons.forEach(btn => {
+                btn.className = "pub-filter-btn bg-white text-gray-800 px-3 py-1.5 border border-black text-xs font-bold uppercase";
+            });
+            event.target.className = "pub-filter-btn bg-usta-red text-white px-3 py-1.5 border border-black text-xs font-bold uppercase";
+
+            const grid = document.getElementById('publications-grid');
+            const filtered = category === 'all' ? publicationsData : publicationsData.filter(p => p.category === category);
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="bg-white p-6 border-2 border-black pixel-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] font-bold uppercase text-usta-red">${item.categoryLabel}</span>
+                            <i class="fa-solid fa-quote-left text-gray-300"></i>
+                        </div>
+                        <h3 class="text-base font-bold uppercase text-usta-black mb-1">${item.title}</h3>
+                        <p class="text-xs text-gray-500 italic mb-3 font-bold">${item.author}</p>
+                        <p class="text-gray-700 text-xs leading-relaxed mb-4">${item.snippet}</p>
+                    </div>
+                    <button onclick="openPubModal(${item.id})" class="w-full py-2 bg-black text-white hover:bg-usta-red border border-black text-xs font-bold uppercase transition">
+                        Leer Texto Completo
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function openPubModal(id) {
+            const item = publicationsData.find(p => p.id === id);
+            if (!item) return;
+            document.getElementById('modal-category').innerText = item.categoryLabel;
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-author').innerText = `Por ${item.author}`;
+            document.getElementById('modal-content').innerHTML = `<p>${item.content}</p>`;
+            document.getElementById('pub-modal').classList.remove('hidden');
+        }
+
+        function closePubModal() {
+            document.getElementById('pub-modal').classList.add('hidden');
+        }
+
+        /* Galería con Visor Ajustado al Tamaño de la Obra */
+        function filterArt(category) {
+            const buttons = document.querySelectorAll('.art-filter-btn');
+            buttons.forEach(btn => {
+                btn.className = "art-filter-btn text-xs px-3 py-1.5 border border-black bg-usta-cream text-black uppercase font-bold";
+            });
+            event.target.className = "art-filter-btn text-xs px-3 py-1.5 border border-black bg-usta-red text-white uppercase font-bold";
+
+            const grid = document.getElementById('art-grid');
+            const filtered = category === 'all' ? artData : artData.filter(a => a.category === category);
+
+            grid.innerHTML = filtered.map(item => `
+                <div onclick="openArtModal(${item.id})" class="bg-usta-cream border-2 border-black p-4 pixel-border flex flex-col justify-between cursor-pointer group hover:border-usta-red transition">
+                    <div>
+                        <div class="h-56 bg-black border-2 border-black mb-4 overflow-hidden relative">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-bold text-xs uppercase">
+                                <i class="fa-solid fa-expand mr-2"></i> Desplegar Dibujo
+                            </div>
+                        </div>
+                        <h3 class="font-bold uppercase text-base text-usta-black mb-1 group-hover:text-usta-red transition">${item.title}</h3>
+                        <p class="text-xs text-gray-600 font-bold italic mb-2">Artista: ${item.author}</p>
+                        <p class="text-xs text-gray-700 leading-relaxed mb-4 line-clamp-2">${item.desc}</p>
+                    </div>
+                    <span class="text-[10px] bg-white border border-black px-2 py-1 font-bold uppercase inline-block text-center">${item.technique}</span>
+                </div>
+            `).join('');
+        }
+
+        function openArtModal(id) {
+            const item = artData.find(a => a.id === id);
+            if (!item) return;
+            document.getElementById('art-modal-img').src = item.image;
+            document.getElementById('art-modal-title').innerText = item.title;
+            document.getElementById('art-modal-author').innerText = `Artista: ${item.author}`;
+            document.getElementById('art-modal-tech').innerText = item.technique;
+            document.getElementById('art-modal-desc').innerText = item.desc;
+            document.getElementById('art-modal').classList.remove('hidden');
+        }
+
+        function closeArtModal() {
+            document.getElementById('art-modal').classList.add('hidden');
+        }
+
+        function openTheaterModal() {
+            document.getElementById('theater-modal').classList.remove('hidden');
+        }
+
+        function closeTheaterModal() {
+            document.getElementById('theater-modal').classList.add('hidden');
+        }
+
+        function handleTheaterSubmit(e) {
+            e.preventDefault();
+            closeTheaterModal();
+            showNotification('¡Inscripción enviada con éxito!');
+        }
+
+        function showNotification(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        window.onload = function() {
+            switchTab('noticias');
+            filterPublications('all');
+            filterArt('all');
+        }
+    </script>
+</body>
+</html>
